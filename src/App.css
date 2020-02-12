@@ -1,38 +1,234 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root{
+  height: 100%;
+  background: #3466AF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  /* Deixa a fonte mais legivel */
+  -webkit-font-smoothing: antialiased;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body, input, button{
+  /* Se o roboto nao estiver disponivel, sera o sans-serif */
+  font-family: Roboto, sans-serif;
+}
+
+#app{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#app main{
+  margin-left: 30px;
+}
+
+aside{
+  width: 320px;
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0.02);
+  border-radius: 2px;
+  padding: 30px 20px;
+}
+
+aside form{
+  margin-top: 30px;
+}
+
+aside form .input-block{
+  margin-top: 20px;
+}
+
+aside form .input-block img{
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 40px;
+  -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+aside form .input-block label{
+  color: #666;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+aside form .input-block input{
+  width: 100%;
+  height: 32px;
+  font-size: 14px;
+  color: #666;
+  border: 0;
+  border-bottom: 1px solid #3466AF;
+}
+
+aside form button[type=submit]{
+  width: 100%;
+  border: 0;
+  margin-top: 30px;
+  background: #3466AF;
+  border-radius: 2px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+aside form button[type=submit]:hover{
+  background: #1876b5;
+}
+
+main{
+  flex: 1;
+}
+
+main ul{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+}
+
+li.poke-item{
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0.02);
+  border-radius: 30px;
+  padding: 20px;
+}
+
+li.poke-item header{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+li.poke-item header img{
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 0 15px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+.poke-info strong{
+  display: block;
+  font-size: 18px;
+  color: #fff;
+  padding: 5px;;
+}
+
+.Normal{
+  background-color: #AAAA99 ;
+}
+.Fire{
+  background-color: #FE4B00;
+}
+.Water{
+  background-color: #3399FF;
+}
+.Electric{
+  background-color: #FFCB05
+}
+.Grass{
+  background-color: #77CC55;
+}
+.Ice{
+  background-color: #66CCFF;
+}
+.Fighting{
+  background-color: #BB5544;
+}
+.Poison{
+  background-color: #AA5599;
+}
+.Ground{
+  background-color: #DDBB55;
+}
+.Flying{
+  background-color: #8899FF;
+}
+.Psychic{
+  background-color: #FF5599;
+}
+.Bug{
+  background-color: #AABB22;
+}
+.Rock{
+  background-color: #BBAA66;
+}
+.Ghost{
+  background-color: #6666BB ;
+}
+.Dragon{
+  background-color: #7766EE;
+}
+.Dark{
+  background-color: #775544;
+}
+.Steel{
+  background-color: #AAAABB;
+}
+.Fairy{
+  background-color:#EE99EE ;
+}
+
+.poke-info span{
+  font-size: 13px;
+  color: #999;
+  margin-top: 2px;
+}
+
+li.poke-item p{
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 10px 0;
+}
+
+@media(max-width: 1000px){
+  #app{
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  #app main{
+    margin-left: 0;
+    margin-top: 30px;
+  }
+
+  #app aside{
+    width: 100%;
+  }
+}
+
+@media(max-width: 650px){
+  main ul{
+    grid-template-columns: 1fr;
+  }
+
+  #app aside{
+    width: 591px;
   }
 }
