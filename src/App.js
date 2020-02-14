@@ -7,33 +7,51 @@ import pokebola from './assets/pokebola.png';
 
 function App() {
   const [poke, setPoke] = useState([]);
+  const [tipos, setTipos] = useState([]);
 
   useEffect(() => {
     async function loadPokemons() {
       const response = await axios.get('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json');
       setPoke(response.data.pokemon);
+
+      //Filtrando os tipos de pokemons
+      const types = [];
+      response.data.pokemon.map(g=>(
+        // eslint-disable-next-line array-callback-return
+        g.type.map(j=>{
+          if(types.filter(p => p === j).length === 0){
+            types.push(j);
+          }
+        })
+      ));
+      setTipos(types);
+      //Fim do filtro
     }
     loadPokemons();
   }, []);
+
+  
 
   return (
     <div id="app">
       <div className="asidediv">
         <aside>
+
           <form>
             <div className="input-block">
               <img src={pokebola} alt="Pokebola" />
-              <label>Buscar Pokémon</label>
-              <input type="text" placeholder="Digite o nome do Pokémon" />
+              <label>Filtrar Pokémon</label>
+              {tipos.map(tipo=>(
+                <button key={tipo} className={tipo} type="submit" onClick={()=>{}}>{tipo}</button>
+              ))}
             </div>
-            <button type="submit">Buscar</button>
           </form>
         </aside>
       </div>
 
       <main>
         <ul>
-          { poke.map(pok => (
+          {poke.map(pok => (
             <li key={pok.id} className="poke-item">
               <header >
                 <div className="poke-img">
