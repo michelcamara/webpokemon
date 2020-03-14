@@ -30,8 +30,6 @@ function App() {
     loadPokemons();
   }, []);
 
-  
-
   return (
     <div id="app">
       <div className="asidediv">
