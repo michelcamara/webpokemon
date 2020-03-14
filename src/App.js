@@ -16,10 +16,10 @@ function App() {
 
       //Filtrando os tipos de pokemons
       const types = [];
-      response.data.pokemon.map(g=>(
+      response.data.pokemon.map(g => (
         // eslint-disable-next-line array-callback-return
-        g.type.map(j=>{
-          if(types.filter(p => p === j).length === 0){
+        g.type.map(j => {
+          if (types.filter(p => p === j).length === 0) {
             types.push(j);
           }
         })
@@ -30,17 +30,29 @@ function App() {
     loadPokemons();
   }, []);
 
+  function filterPoks(tipo) {
+    console.log(tipo);
+    const section = [];
+    poke.map(pok => (
+      pok.map(p => {
+        if (p.type[0] === tipo || p.type[1] === tipo) {
+          section.push(pok);
+        }
+      })
+    ))
+    setPoke(section);
+  }
+
   return (
     <div id="app">
       <div className="asidediv">
         <aside>
-
-          <form>
+          <form onSubmit={filterPoks}>
             <div className="input-block">
               <img src={pokebola} alt="Pokebola" />
               <label>Filtrar Pokémon</label>
-              {tipos.map(tipo=>(
-                <button key={tipo} className={tipo} type="submit" onClick={()=>{}}>{tipo}</button>
+              {tipos.map(tipo => (
+                <button key={tipo} className={tipo} value={tipo} type="submit">{tipo}</button>
               ))}
             </div>
           </form>
