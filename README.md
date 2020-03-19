@@ -1,4 +1,4 @@
-<img src="assets/pokeFinder.png" align="center"/>
+<img src="src/assets/pokeFinder.png" align="center"/>
 
 # 💡 Poké Finder - Uma biblioteca de pokémons
 
