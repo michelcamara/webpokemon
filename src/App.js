@@ -5,11 +5,10 @@ import './App.css';
 import pokebola from './assets/pokebola.png';
 import PokeForm from './components/PokeForm';
 
-
 function App() {
   const [poke, setPoke] = useState([]);
   const [tipos, setTipos] = useState([]);
-  
+
 
   useEffect(() => {
     async function loadPokemons() {
@@ -32,22 +31,20 @@ function App() {
     loadPokemons();
   }, []);
 
-
-
   //Funcao que é disparada quando o botao de submit for clicado
- async function handleTypes(data) {
-    const {tipo}= data;
+  async function handleTypes(data) {
+    const { tipo } = data;
     const section = [];
     const response = await axios.get('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json');
     // eslint-disable-next-line array-callback-return
     response.data.pokemon.map(pok => {
-      if(pok.type[0] === tipo || pok.type[1] === tipo){
+      if (pok.type[0] === tipo || pok.type[1] === tipo) {
         section.push(pok);
       }
     })
-   
+
     setPoke(section);
-    
+
   }
 
   return (
@@ -82,7 +79,6 @@ function App() {
               <p>Altura: {pok.height}</p>
               <p>Peso: {pok.weight}</p>
               <p>Fraquezas: {pok.weaknesses.join(', ')}</p>
-              {/* <p>Proximas Evoluçoes: {pok.next_evolution.name.join(', ')}</p> */}
             </li>
           ))}
         </ul>

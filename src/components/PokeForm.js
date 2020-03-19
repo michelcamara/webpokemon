@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 export default function PokeForm({ tipo, onSubmit, }) {
 
   async function handleSubmit(e) {
